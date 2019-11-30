@@ -9,22 +9,16 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.example.dictionary.interfaceMVP.ManchinhView;
-
-public class Fragment_Manchinh extends Fragment implements ManchinhView {
-
+public class Fragment_CaiDat extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.frament_manchinh, container, false);
+        View view = inflater.inflate(R.layout.fragment_caidat, container, false);
         return view;
-
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-
     }
 }

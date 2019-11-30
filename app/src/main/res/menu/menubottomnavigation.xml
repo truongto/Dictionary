@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/navigation_home"
-        android:icon="@drawable/ic_launcher_background"
-        android:title="man chinh" />
+        android:id="@+id/ManChinh"
+        android:icon="@drawable/ic_action_mandich"
+        android:title="Dịch" />
 
     <item
-        android:id="@+id/navigation_dashboard"
-        android:icon="@drawable/ic_launcher_background"
-        android:title="manyeu rhich" />
+        android:id="@+id/YeuThich"
+        android:icon="@drawable/ic_action_yeuthich"
+        android:title="Yêu Thích" />
 
     <item
-        android:id="@+id/navigation_notifications"
-        android:icon="@drawable/ic_launcher_background"
-        android:title="man lich su" />
+        android:id="@+id/LichSu"
+        android:icon="@drawable/ic_action_lichsu"
+        android:title="Lịch Sử" />
     <item
-        android:id="@+id/navigation"
-        android:icon="@drawable/ic_launcher_background"
-        android:title="cai dat" />
+        android:id="@+id/CaiDat"
+        android:icon="@drawable/ic_action_caidat"
+        android:title="Cài Đặt" />
 </menu>

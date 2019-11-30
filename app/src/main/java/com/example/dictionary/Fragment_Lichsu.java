@@ -9,7 +9,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-public class Fragment_Lichsu extends Fragment {
+import com.example.dictionary.interfaceMVP.ManlichsuView;
+
+public class Fragment_Lichsu extends Fragment implements ManlichsuView {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
