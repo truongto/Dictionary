@@ -12,14 +12,16 @@
         android:layout_marginTop="50dp"
         android:textColor="#000"/>
     <ImageView
+        android:id="@+id/ngonnguAnh"
         android:layout_width="150dp"
-        android:layout_height="200dp"
+        android:layout_height="210dp"
         android:src="@drawable/eee"
         android:layout_gravity="center"
         android:layout_marginTop="10dp"
        >
     </ImageView>
     <ImageView
+        android:id="@+id/ngonnguViet"
         android:layout_width="150dp"
         android:layout_height="200dp"
         android:src="@drawable/vvv"
