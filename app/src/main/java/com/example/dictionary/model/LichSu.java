@@ -6,16 +6,6 @@ public class LichSu {
     String ngay;
     String gio;
 
-    public LichSu(String id, String noidung, String ngay, String gio) {
-        this.id = id;
-        this.noidung = noidung;
-        this.ngay = ngay;
-        this.gio = gio;
-    }
-
-    public LichSu() {
-
-    }
 
     public String getId() {
         return id;

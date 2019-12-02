@@ -24,7 +24,7 @@ public class Fragment_CaiDat extends Fragment {
     private TextView textView;
     private SharedPreferences sharedPreferences;
     BottomNavigationView bottomNavigationView;
-    Context context;
+
 
     @Nullable
     @Override

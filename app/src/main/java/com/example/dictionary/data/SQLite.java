@@ -1,4 +1,4 @@
-package com.example.dictionary.Data;
+package com.example.dictionary.data;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -9,6 +9,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import androidx.annotation.Nullable;
 
 import com.example.dictionary.model.LichSu;
+import com.example.dictionary.model.YeuThich;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,14 +23,15 @@ public class SQLite extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         sqLiteDatabase.execSQL(LichSu.CREATE_TABLE_LICH_SU);
+        sqLiteDatabase.execSQL(YeuThich.CREATE_TABLE_YEU_THICH);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
         sqLiteDatabase.execSQL(" DROP TABLE IF EXISTS " + LichSu.TABLE_LICH_SU);
+        sqLiteDatabase.execSQL(" DROP TABLE IF EXISTS " + YeuThich.TABLE_YEU_THICH);
 
     }
-
     public long inserLichSu(LichSu lichSu) {
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
@@ -41,7 +43,6 @@ public class SQLite extends SQLiteOpenHelper {
         sqLiteDatabase.close();
         return result;
     }
-
     public List<LichSu> getAllLichSu() {
         List<LichSu> lichSus = new ArrayList<>();
         String SELECT = " SELECT * FROM " + LichSu.TABLE_LICH_SU;
@@ -66,9 +67,46 @@ public class SQLite extends SQLiteOpenHelper {
         }
         return lichSus;
     }
-    public void deleteLoaithu(String idLoaithu) {
+    public void deleteLichSu(String idLichSu) {
         SQLiteDatabase db = this.getWritableDatabase();
-        db.delete(LichSu.TABLE_LICH_SU, LichSu.COLUMN_ID + "=?", new String[]{String.valueOf(idLoaithu)});
+        db.delete(LichSu.TABLE_LICH_SU, LichSu.COLUMN_ID + "=?", new String[]{String.valueOf(idLichSu)});
+        db.close();
+    }
+
+
+
+    public long inserYeuThich(YeuThich yeuThich) {
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(YeuThich.COLUMN_ID, yeuThich.getId());
+        contentValues.put(YeuThich.COLUMN_NOIDUNG, yeuThich.getNoidung());
+        long result = sqLiteDatabase.insert(LichSu.TABLE_LICH_SU, null, contentValues);
+        sqLiteDatabase.close();
+        return result;
+    }
+    public List<YeuThich> getAllYeuThich() {
+        List<YeuThich> thichList = new ArrayList<>();
+        String SELECT = " SELECT * FROM " + YeuThich.TABLE_YEU_THICH;
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        Cursor cursor = sqLiteDatabase.rawQuery(SELECT, null);
+        if (cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            while (!cursor.isAfterLast()) {
+                String id = cursor.getString(cursor.getColumnIndex(LichSu.COLUMN_ID));
+                String noidung = cursor.getString(cursor.getColumnIndex(LichSu.COLUMN_NOIDUNG));
+                YeuThich yeuThich = new YeuThich();
+                yeuThich.setId(id);
+                yeuThich.setNoidung(noidung);
+                thichList.add(yeuThich);
+                cursor.moveToNext();
+            }
+            cursor.close();
+        }
+        return thichList;
+    }
+    public void deleteYeuThich(String idLoaithu) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(YeuThich.TABLE_YEU_THICH, YeuThich.COLUMN_ID + "=?", new String[]{String.valueOf(idLoaithu)});
         db.close();
     }
 
