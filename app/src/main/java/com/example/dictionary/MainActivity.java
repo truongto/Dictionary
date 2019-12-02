@@ -8,8 +8,12 @@ import androidx.fragment.app.FragmentManager;
 
 import android.app.Notification;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -17,17 +21,22 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 public class MainActivity extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
     private Toolbar toolbar;
+    private ImageView imageViet, imageAnh;
+    private String mydata = "my_data";
+    String LangCode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         bottomNavigationView = findViewById(R.id.bottom_navigation);
-
         toolbar = findViewById(R.id.toolbar_manchinh);
+        imageViet = findViewById(R.id.icon_Viet);
+        imageAnh = findViewById(R.id.icon_Anh);
+
         //toolbar
         setSupportActionBar(toolbar);
-        ActionBar actionBar=getSupportActionBar();
+        ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle("Dictionary");
 
         //khi vao app hien len man chinh
@@ -61,6 +70,55 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+//chuyen ngon cho bottomMenu
+        SharedPreferences sharedPreferences = getSharedPreferences(mydata, MODE_PRIVATE);
+        LangCode = sharedPreferences.getString("NgonNgu", "Viet");
+        imageAnh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                saveLangCode();
+                LangCode = "Anh";
+                bottomNavigationView.getMenu().findItem(R.id.ManChinh).setTitle("Translate");
+                bottomNavigationView.getMenu().findItem(R.id.YeuThich).setTitle("Favorite");
+                bottomNavigationView.getMenu().findItem(R.id.LichSu).setTitle("History");
+                bottomNavigationView.getMenu().findItem(R.id.LichSu).setTitle("Setting");
+            }
+        });
+        imageViet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                saveLangCode();
+                LangCode = "Viet";
+                bottomNavigationView.getMenu().findItem(R.id.ManChinh).setTitle("Dịch");
+                bottomNavigationView.getMenu().findItem(R.id.YeuThich).setTitle("Yêu Thích");
+                bottomNavigationView.getMenu().findItem(R.id.LichSu).setTitle("Lịch Sử");
+                bottomNavigationView.getMenu().findItem(R.id.LichSu).setTitle("Cài Đặt");
+
+            }
+        });
+        if (LangCode.equals("Viet")) {
+            bottomNavigationView.getMenu().findItem(R.id.ManChinh).setTitle("Dịch");
+            bottomNavigationView.getMenu().findItem(R.id.YeuThich).setTitle("Yêu Thích");
+            bottomNavigationView.getMenu().findItem(R.id.LichSu).setTitle("Lịch Sử");
+            bottomNavigationView.getMenu().findItem(R.id.LichSu).setTitle("Cài Đặt");
+        }
+        if (LangCode.equals("Anh")) {
+            bottomNavigationView.getMenu().findItem(R.id.ManChinh).setTitle("Translate");
+            bottomNavigationView.getMenu().findItem(R.id.YeuThich).setTitle("Favorite");
+            bottomNavigationView.getMenu().findItem(R.id.LichSu).setTitle("History");
+            bottomNavigationView.getMenu().findItem(R.id.LichSu).setTitle("Setting");
+        }
+
+    }
+
+    public void saveLangCode() {
+        //tạo đối tượng getSharedPreferences
+        SharedPreferences pre = getSharedPreferences(mydata, MODE_PRIVATE);
+        //tạo đối tượng Editor để lưu thay đổi
+        SharedPreferences.Editor editor = pre.edit();
+        editor.putString("NgonNgu", LangCode);
+        //chấp nhận lưu xuống file
+        editor.commit();
     }
 
 }

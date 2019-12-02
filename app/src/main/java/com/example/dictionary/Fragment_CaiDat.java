@@ -8,17 +8,22 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
 public class Fragment_CaiDat extends Fragment {
     private String mydata = "my_data";
     public String LangCode;
     private ImageView imageAnh, imageViet;
+    private TextView textView;
     private SharedPreferences sharedPreferences;
+    BottomNavigationView bottomNavigationView;
     Context context;
 
     @Nullable
@@ -33,8 +38,10 @@ public class Fragment_CaiDat extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         imageAnh = view.findViewById(R.id.ngonnguAnh);
         imageViet = view.findViewById(R.id.ngonnguViet);
+        textView = view.findViewById(R.id.tv_caidat);
+        bottomNavigationView = view.findViewById(R.id.bottom_navigation);
         //luu ngon ngu phan cai dat
-        sharedPreferences = getActivity().getSharedPreferences(mydata, Context.MODE_PRIVATE);
+        sharedPreferences = this.getActivity().getSharedPreferences(mydata, Context.MODE_PRIVATE);
         LangCode = sharedPreferences.getString("NgonNgu", "Viet");
         if (LangCode.equals("Viet")) {
             Toast.makeText(getActivity(), "Tiếng Việt", Toast.LENGTH_SHORT).show();
@@ -43,12 +50,14 @@ public class Fragment_CaiDat extends Fragment {
             Toast.makeText(getActivity(), "Tiếng Anh", Toast.LENGTH_SHORT).show();
 
         }
+
         imageAnh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 LangCode = "Anh";
                 saveLangCode();
-                Toast.makeText(getActivity(), "Tiếng Anh", Toast.LENGTH_SHORT).show();
+                textView.setText("Choose The Language");
+
                 startActivity(new Intent(getActivity(), MainActivity.class));
             }
         });
@@ -57,7 +66,7 @@ public class Fragment_CaiDat extends Fragment {
             public void onClick(View view) {
                 LangCode = "Viet";
                 saveLangCode();
-                Toast.makeText(getActivity(), "Tiếng Việt", Toast.LENGTH_SHORT).show();
+                textView.setText("Chọn Ngôn Ngữ");
                 startActivity(new Intent(getActivity(), MainActivity.class));
             }
         });
@@ -66,11 +75,12 @@ public class Fragment_CaiDat extends Fragment {
 
     public void saveLangCode() {
         //tạo đối tượng getSharedPreferences
-        SharedPreferences pre = getActivity().getSharedPreferences(mydata, Context.MODE_PRIVATE);
+        SharedPreferences pre = this.getActivity().getSharedPreferences(mydata, Context.MODE_PRIVATE);
         //tạo đối tượng Editor để lưu thay đổi
         SharedPreferences.Editor editor = pre.edit();
         editor.putString("NgonNgu", LangCode);
         //chấp nhận lưu xuống file
         editor.commit();
     }
+
 }

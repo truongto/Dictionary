@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:gravity="center"
     tools:context=".ManChao"
-    android:background="#66FF66">
+    android:background="#009966">
 
     <ImageView
         android:layout_width="300dp"

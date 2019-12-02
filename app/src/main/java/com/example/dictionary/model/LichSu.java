@@ -13,6 +13,10 @@ public class LichSu {
         this.gio = gio;
     }
 
+    public LichSu() {
+
+    }
+
     public String getId() {
         return id;
     }
@@ -44,4 +48,13 @@ public class LichSu {
     public void setGio(String gio) {
         this.gio = gio;
     }
+    public static final String TABLE_LICH_SU= "Lichsu";
+    public static final String COLUMN_ID = "id";
+    public static final String COLUMN_NOIDUNG = "noidung";
+    public static final String COLUMN_NGAY = "ngay";
+    public static final String COLUMN_GIO = "gio";
+
+    public static final String CREATE_TABLE_LICH_SU = " CREATE TABLE " + TABLE_LICH_SU + " ( " + COLUMN_ID +
+            " INTEGER PRIMARY KEY, " + COLUMN_NOIDUNG + " VARCHAR, " + COLUMN_NGAY + " VARCHAR, " + COLUMN_GIO + " VARCHAR )";
+
 }

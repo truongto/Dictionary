@@ -10,8 +10,10 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.dictionary.interfaceMVP.ManchinhView;
+import com.example.dictionary.presenter.Manchinh_Presenter;
 
 public class Fragment_Manchinh extends Fragment implements ManchinhView {
+    Manchinh_Presenter manchinh_presenter;
 
     @Nullable
     @Override
@@ -24,7 +26,7 @@ public class Fragment_Manchinh extends Fragment implements ManchinhView {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
+        manchinh_presenter = new Manchinh_Presenter(this);
 
     }
 }

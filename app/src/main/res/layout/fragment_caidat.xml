@@ -5,10 +5,11 @@
     android:layout_height="match_parent"
     >
     <TextView
+        android:id="@+id/tv_caidat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="30dp"
-        android:text="Mời Bạn Chọn Ngôn Ngữ"
+        android:text="Chọn Ngôn Ngữ"
         android:layout_marginTop="50dp"
         android:textColor="#000"/>
     <ImageView
