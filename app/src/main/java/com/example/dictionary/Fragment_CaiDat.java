@@ -14,6 +14,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -57,8 +58,11 @@ public class Fragment_CaiDat extends Fragment {
                 LangCode = "Anh";
                 saveLangCode();
                 textView.setText("Choose The Language");
+                Fragment_Manchinh fragment_manchinh = new Fragment_Manchinh();
+                FragmentManager fragmentManager = getFragmentManager();
+                fragmentManager.beginTransaction().replace(R.id.fragment, fragment_manchinh).commit();
+//                startActivity(new Intent(getActivity(), MainActivity.class));
 
-                startActivity(new Intent(getActivity(), MainActivity.class));
             }
         });
         imageViet.setOnClickListener(new View.OnClickListener() {
@@ -67,7 +71,10 @@ public class Fragment_CaiDat extends Fragment {
                 LangCode = "Viet";
                 saveLangCode();
                 textView.setText("Chọn Ngôn Ngữ");
-                startActivity(new Intent(getActivity(), MainActivity.class));
+                Fragment_ManVietAnh fragment_manVietAnh = new Fragment_ManVietAnh();
+                FragmentManager fragmentManager = getFragmentManager();
+                fragmentManager.beginTransaction().replace(R.id.fragment, fragment_manVietAnh).commit();
+//                startActivity(new Intent(getActivity(), MainActivity.class));
             }
         });
 

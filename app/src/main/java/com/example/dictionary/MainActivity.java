@@ -81,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
                 bottomNavigationView.getMenu().findItem(R.id.ManChinh).setTitle("Translate");
                 bottomNavigationView.getMenu().findItem(R.id.YeuThich).setTitle("Favorite");
                 bottomNavigationView.getMenu().findItem(R.id.LichSu).setTitle("History");
-                bottomNavigationView.getMenu().findItem(R.id.LichSu).setTitle("Setting");
+                bottomNavigationView.getMenu().findItem(R.id.CaiDat).setTitle("Setting");
             }
         });
         imageViet.setOnClickListener(new View.OnClickListener() {
@@ -92,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
                 bottomNavigationView.getMenu().findItem(R.id.ManChinh).setTitle("Dịch");
                 bottomNavigationView.getMenu().findItem(R.id.YeuThich).setTitle("Yêu Thích");
                 bottomNavigationView.getMenu().findItem(R.id.LichSu).setTitle("Lịch Sử");
-                bottomNavigationView.getMenu().findItem(R.id.LichSu).setTitle("Cài Đặt");
+                bottomNavigationView.getMenu().findItem(R.id.CaiDat).setTitle("Cài Đặt");
 
             }
         });
@@ -100,13 +100,13 @@ public class MainActivity extends AppCompatActivity {
             bottomNavigationView.getMenu().findItem(R.id.ManChinh).setTitle("Dịch");
             bottomNavigationView.getMenu().findItem(R.id.YeuThich).setTitle("Yêu Thích");
             bottomNavigationView.getMenu().findItem(R.id.LichSu).setTitle("Lịch Sử");
-            bottomNavigationView.getMenu().findItem(R.id.LichSu).setTitle("Cài Đặt");
+            bottomNavigationView.getMenu().findItem(R.id.CaiDat).setTitle("Cài Đặt");
         }
         if (LangCode.equals("Anh")) {
             bottomNavigationView.getMenu().findItem(R.id.ManChinh).setTitle("Translate");
             bottomNavigationView.getMenu().findItem(R.id.YeuThich).setTitle("Favorite");
             bottomNavigationView.getMenu().findItem(R.id.LichSu).setTitle("History");
-            bottomNavigationView.getMenu().findItem(R.id.LichSu).setTitle("Setting");
+            bottomNavigationView.getMenu().findItem(R.id.CaiDat).setTitle("Setting");
         }
 
     }

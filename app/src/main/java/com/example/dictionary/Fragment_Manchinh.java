@@ -4,16 +4,16 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
-import com.example.dictionary.interfaceMVP.ManchinhView;
-import com.example.dictionary.presenter.Manchinh_Presenter;
 
-public class Fragment_Manchinh extends Fragment implements ManchinhView {
-    Manchinh_Presenter manchinh_presenter;
+public class Fragment_Manchinh extends Fragment {
+    private ImageButton imageDoi;
 
     @Nullable
     @Override
@@ -26,7 +26,16 @@ public class Fragment_Manchinh extends Fragment implements ManchinhView {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        manchinh_presenter = new Manchinh_Presenter(this);
+        imageDoi = view.findViewById(R.id.doi_AV);
+        imageDoi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Fragment_ManVietAnh fragment_manVietAnh=new Fragment_ManVietAnh();
+                FragmentManager fragmentManager = getFragmentManager();
+                fragmentManager.beginTransaction().replace(R.id.fragment, fragment_manVietAnh).commit();
+
+            }
+        });
 
     }
 }
