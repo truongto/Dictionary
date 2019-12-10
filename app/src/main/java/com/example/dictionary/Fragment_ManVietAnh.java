@@ -22,6 +22,7 @@ private ImageButton imagedoi;
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         imagedoi=view.findViewById(R.id.doi_VA);
+        //doi fragment Viet Anh sang Anh Viet
         imagedoi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

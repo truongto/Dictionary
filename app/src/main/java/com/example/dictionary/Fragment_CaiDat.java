@@ -1,7 +1,6 @@
 package com.example.dictionary;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,7 +9,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -41,6 +39,7 @@ public class Fragment_CaiDat extends Fragment {
         imageViet = view.findViewById(R.id.ngonnguViet);
         textView = view.findViewById(R.id.tv_caidat);
         bottomNavigationView = view.findViewById(R.id.bottom_navigation);
+
         //luu ngon ngu phan cai dat
         sharedPreferences = this.getActivity().getSharedPreferences(mydata, Context.MODE_PRIVATE);
         LangCode = sharedPreferences.getString("NgonNgu", "Viet");
@@ -49,9 +48,9 @@ public class Fragment_CaiDat extends Fragment {
         }
         if (LangCode.equals("Anh")) {
             Toast.makeText(getActivity(), "Tiếng Anh", Toast.LENGTH_SHORT).show();
-
         }
 
+        //chuyen ngon ngu de dich
         imageAnh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -62,7 +61,6 @@ public class Fragment_CaiDat extends Fragment {
                 FragmentManager fragmentManager = getFragmentManager();
                 fragmentManager.beginTransaction().replace(R.id.fragment, fragment_manchinh).commit();
 //                startActivity(new Intent(getActivity(), MainActivity.class));
-
             }
         });
         imageViet.setOnClickListener(new View.OnClickListener() {
@@ -79,7 +77,6 @@ public class Fragment_CaiDat extends Fragment {
         });
 
     }
-
     public void saveLangCode() {
         //tạo đối tượng getSharedPreferences
         SharedPreferences pre = this.getActivity().getSharedPreferences(mydata, Context.MODE_PRIVATE);
