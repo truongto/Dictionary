@@ -34,7 +34,7 @@ public class FragmentManchinh extends Fragment implements ManchinhView {
     private DataDictionary dataDictionary;
     private List<Word> wordList = new ArrayList<>();
     private Context context;
-    private TimkiemAVadapter avAdapter;
+
     private RecyclerView recyclerView;
     private ImageButton imageButton;
     private EditText editTextnhap;
@@ -62,6 +62,7 @@ public class FragmentManchinh extends Fragment implements ManchinhView {
         recyclerView = view.findViewById(R.id.recy_timkiemAV);
         imageButton = view.findViewById(R.id.timAV);
         editTextnhap = view.findViewById(R.id.nhapAV);
+        aVdao = new AVdao(getActivity());
         manchinhPresenter.Data();
         manchinhPresenter.Tim();
 
@@ -86,12 +87,13 @@ public class FragmentManchinh extends Fragment implements ManchinhView {
 
         if (text.isEmpty()) {
             editTextnhap.setError("Mời bạn nhập từ!");
+        }else {
+            wordList = aVdao.searchWord(text);
         }
-        wordList = aVdao.searchWord(text);
         if (wordList.size() == 0) {
             Toast.makeText(getActivity(), "Không có thông tin về từ", Toast.LENGTH_SHORT).show();
         } else {
-            avAdapter = new TimkiemAVadapter(this, wordList);
+           TimkiemAVadapter avAdapter = new TimkiemAVadapter(getActivity(), wordList);
             LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
             recyclerView.setLayoutManager(linearLayoutManager);
             recyclerView.setAdapter(avAdapter);

@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.dictionary.FragmentManchinh;
@@ -17,17 +18,13 @@ import com.example.dictionary.model.Word;
 import java.util.List;
 
 public class TimkiemAVadapter extends RecyclerView.Adapter<TimkiemAVadapter.Holder> {
-    Context context;
-    List<Word> wordList;
-    DataDictionary dataDictionary;
-FragmentManchinh fragmentManchinh;
+   private Context context;
+   private List<Word> wordList;
 
-    public TimkiemAVadapter(FragmentManchinh fragmentManchinh, List<Word> wordList) {
-        this.fragmentManchinh = fragmentManchinh;
-        this.wordList = wordList;
+    public TimkiemAVadapter(Context context, List<Word> wordList) {
+        this.context=context;
+        this.wordList=wordList;
     }
-
-
     @NonNull
     @Override
     public TimkiemAVadapter.Holder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -41,19 +38,6 @@ FragmentManchinh fragmentManchinh;
         final Word word = wordList.get(position);
         holder.textView.setText(word.word);
 
-//        holder.textView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                AlertDialog.Builder builder = new AlertDialog.Builder(context);
-//
-//                builder.setTitle(word.word);
-//                builder.setMessage(Html.fromHtml(word.html));
-//
-//                builder.show();
-//
-////                Toast.makeText(context, Html.fromHtml(word.html), Toast.LENGTH_SHORT).show();
-//            }
-//        });
 
     }
 
