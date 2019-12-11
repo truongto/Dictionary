@@ -9,10 +9,7 @@ public class ManchinhPresenter {
         this.manchinhView = manchinhView;
     }
 
-    public void Tim(){
+    public void Tim() {
         manchinhView.TimWord();
-    }
-    public void Data(){
-       manchinhView.Laydulieu();
     }
 }

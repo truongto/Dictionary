@@ -23,5 +23,6 @@ public class FragmentYeuThich extends Fragment implements ManyeuthichView {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        
     }
 }

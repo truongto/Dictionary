@@ -1,30 +1,35 @@
 package com.example.dictionary.adapter;
 
+import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
+import android.os.Build;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.dictionary.FragmentManchinh;
 import com.example.dictionary.R;
-import com.example.dictionary.data.DataDictionary;
+import com.example.dictionary.interfaceMVP.OnItemClick;
 import com.example.dictionary.model.Word;
 
 import java.util.List;
 
 public class TimkiemAVadapter extends RecyclerView.Adapter<TimkiemAVadapter.Holder> {
-   private Context context;
-   private List<Word> wordList;
+    public OnItemClick onItemClick;
+    Context context;
+    List<Word> wordList;
+
 
     public TimkiemAVadapter(Context context, List<Word> wordList) {
-        this.context=context;
-        this.wordList=wordList;
+        this.context = context;
+        this.wordList = wordList;
     }
+
     @NonNull
     @Override
     public TimkiemAVadapter.Holder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -34,10 +39,16 @@ public class TimkiemAVadapter extends RecyclerView.Adapter<TimkiemAVadapter.Hold
     }
 
     @Override
-    public void onBindViewHolder(@NonNull TimkiemAVadapter.Holder holder, int position) {
-        final Word word = wordList.get(position);
-        holder.textView.setText(word.word);
+    public void onBindViewHolder(@NonNull TimkiemAVadapter.Holder holder, final int position) {
+        final Word words = wordList.get(position);
+        holder.textView.setText(words.word);
+        holder.textView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onItemClick.itemclick(words);
 
+            }
+        });
 
     }
 

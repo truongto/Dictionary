@@ -114,6 +114,19 @@
                             android:src="@drawable/like" />
 
                         <TextView
+                            android:id="@+id/hienthiKQ"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="#fff"
+                            android:textSize="20dp" />
+                        <TextView
+                            android:id="@+id/hienthiKQ2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="#fff"
+                            android:textSize="20dp" />
+                        <TextView
+                            android:id="@+id/hienthiKQ3"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:textColor="#fff"

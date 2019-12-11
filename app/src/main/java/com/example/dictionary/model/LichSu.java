@@ -44,7 +44,6 @@ public class LichSu {
     public static final String COLUMN_NGAY = "ngay";
     public static final String COLUMN_GIO = "gio";
 
-    public static final String CREATE_TABLE_LICH_SU = " CREATE TABLE " + TABLE_LICH_SU + " ( " + COLUMN_ID +
-            " INTEGER PRIMARY KEY, " + COLUMN_NOIDUNG + " VARCHAR, " + COLUMN_NGAY + " VARCHAR, " + COLUMN_GIO + " VARCHAR )";
+    public static final String CREATE_TABLE_LICH_SU = " CREATE TABLE " + TABLE_LICH_SU + " ( " + COLUMN_ID + " INTEGER PRIMARY KEY, " + COLUMN_NOIDUNG + " VARCHAR, " + COLUMN_NGAY + " VARCHAR, " + COLUMN_GIO + " VARCHAR ) ";
 
 }
