@@ -1,19 +1,14 @@
 package com.example.dictionary.adapter;
 
-import android.app.AlertDialog;
 import android.content.Context;
-import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.dictionary.Fragment_Manchinh;
 import com.example.dictionary.R;
 import com.example.dictionary.data.Data_Dictionary;
 import com.example.dictionary.model.Word;

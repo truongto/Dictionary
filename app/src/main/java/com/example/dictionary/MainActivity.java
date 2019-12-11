@@ -6,15 +6,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.FragmentManager;
 
-import android.app.Notification;
-import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -40,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         actionBar.setTitle("Dictionary");
 
         //khi vao app hien len man chinh
-        Fragment_Manchinh fragment_manchinh = new Fragment_Manchinh();
+        FragmentManchinh fragment_manchinh = new FragmentManchinh();
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction().add(R.id.fragment, fragment_manchinh).commit();
 
@@ -50,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId()) {
                     case R.id.ManChinh:
-                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new Fragment_Manchinh())
+                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new FragmentManchinh())
                                 .commit();
                         return true;
                     case R.id.YeuThich:

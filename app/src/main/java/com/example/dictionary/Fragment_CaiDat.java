@@ -57,7 +57,7 @@ public class Fragment_CaiDat extends Fragment {
                 LangCode = "Anh";
                 saveLangCode();
                 textView.setText("Choose The Language");
-                Fragment_Manchinh fragment_manchinh = new Fragment_Manchinh();
+                FragmentManchinh fragment_manchinh = new FragmentManchinh();
                 FragmentManager fragmentManager = getFragmentManager();
                 fragmentManager.beginTransaction().replace(R.id.fragment, fragment_manchinh).commit();
 //                startActivity(new Intent(getActivity(), MainActivity.class));

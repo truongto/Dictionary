@@ -26,7 +26,7 @@ private ImageButton imagedoi;
         imagedoi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Fragment_Manchinh fragment_manchinh=new Fragment_Manchinh();
+                FragmentManchinh fragment_manchinh=new FragmentManchinh();
                 FragmentManager fragmentManager = getFragmentManager();
                 fragmentManager.beginTransaction().replace(R.id.fragment, fragment_manchinh).commit();
 

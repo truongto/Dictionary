@@ -49,12 +49,13 @@ public class Data_Dictionary extends SQLiteOpenHelper {
         File dbFile = new File(DB_PATH + NAME);
         return dbFile.exists();
     }
+
     public void createDataBase() throws IOException {
         boolean mDataBaseExits = checkDataBase();
         if (!mDataBaseExits) {
             this.getReadableDatabase();
             this.close();
-            try {
+            try{
                 copyDataBase();
                 Log.e(TAG, "createDatabase database created");
             } catch (IOException mIOException) {
@@ -90,70 +91,6 @@ public class Data_Dictionary extends SQLiteOpenHelper {
         if (mDataBase != null)
             mDataBase.close();
         super.close();
-    }
-    public List<Word> searchVA(String text) {
-        List<Word> words = new ArrayList<>();
-
-        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
-
-        String SQL = "SELECT * FROM " + VA_TABLE + " WHERE " + WORD + " LIKE '" + text + "%'";
-
-        Cursor cursor = sqLiteDatabase.rawQuery(SQL, null);
-
-        if (cursor != null) {
-            if (cursor.getCount() > 0) {
-
-                cursor.moveToFirst();
-                while (!cursor.isAfterLast()) {
-
-                    Word word = new Word();
-                    word.id = cursor.getInt(cursor.getColumnIndex(ID));
-                    word.word = cursor.getString(cursor.getColumnIndex(WORD));
-                    word.description = cursor.getString(cursor.getColumnIndex(DES));
-                    word.html = cursor.getString(cursor.getColumnIndex(HTML));
-                    word.pronounce = cursor.getString(cursor.getColumnIndex(PRO));
-                    words.add(word);
-                    cursor.moveToNext();
-
-                }
-                cursor.close();
-            }
-        }
-
-        return words;
-    }
-
-
-
-    public List<Word> searchWord(String text) {
-        List<Word> words = new ArrayList<>();
-
-        String SQL = "SELECT * FROM " + AV_TABLE + " WHERE " + WORD + " LIKE '" + text + "%'";
-
-        Cursor cursor = mDataBase.rawQuery(SQL, null);
-
-        if (cursor != null) {
-            if (cursor.getCount() > 0) {
-
-                cursor.moveToFirst();
-                while (!cursor.isAfterLast()) {
-
-                    Word word = new Word();
-
-                    word.id = cursor.getInt(cursor.getColumnIndex(ID));
-                    word.word = cursor.getString(cursor.getColumnIndex(WORD));
-                    word.description = cursor.getString(cursor.getColumnIndex(DES));
-                    word.html = cursor.getString(cursor.getColumnIndex(HTML));
-                    word.pronounce = cursor.getString(cursor.getColumnIndex(PRO));
-                    words.add(word);
-                    cursor.moveToNext();
-
-                }
-                cursor.close();
-            }
-        }
-
-        return words;
     }
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {

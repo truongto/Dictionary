@@ -1,5 +1,6 @@
 package com.example.dictionary;
 
+import android.app.FragmentBreadCrumbs;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -19,30 +20,35 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.dictionary.adapter.TimkiemAV_Adapter;
 import com.example.dictionary.data.Data_Dictionary;
+import com.example.dictionary.databinding.FramentManchinhBindingImpl;
+import com.example.dictionary.interfaceMVP.ManchinhView;
 import com.example.dictionary.model.Word;
+import com.example.dictionary.presenter.Manchinh_presenter;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class Fragment_Manchinh extends Fragment {
+public class FragmentManchinh extends Fragment implements ManchinhView {
     private ImageButton imageDoi;
     private Data_Dictionary dataDictionary;
     private List<Word> wordList;
     private Context context;
     private TimkiemAV_Adapter avAdapter;
-
     private RecyclerView recyclerView;
     private ImageButton imageButton;
     private EditText editTextnhap;
-    public static final String DBTEN = "dict_hh.db";
+    private Manchinh_presenter manchinh_presenter;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.frament_manchinh, container, false);
-        return view;
+   View view = inflater.inflate(R.layout.frament_manchinh, container, false);
+
+        FramentManchinhBindingImpl framentManchinhBinding =
+
+        return container;
 
     }
 
@@ -53,19 +59,6 @@ public class Fragment_Manchinh extends Fragment {
         recyclerView = view.findViewById(R.id.recy_timkiemAV);
         imageButton = view.findViewById(R.id.timAV);
         editTextnhap = view.findViewById(R.id.nhapAV);
-
-        wordList = new ArrayList<>();
-
-        dataDictionary = new Data_Dictionary(getActivity());
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
-        recyclerView.setLayoutManager(linearLayoutManager);
-        avAdapter = new TimkiemAV_Adapter(wordList, getActivity());
-        recyclerView.setAdapter(avAdapter);
-        try {
-            dataDictionary.createDataBase();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
 
 
         //doi fragment Anh Viet sang Viet Anh
@@ -78,43 +71,17 @@ public class Fragment_Manchinh extends Fragment {
 
             }
         });
-        imageButton.setOnClickListener(new View.OnClickListener() {
-            List<Word> wordLists =new ArrayList<>();
-            @Override
-            public void onClick(View view) {
-                String nhap = editTextnhap.getText().toString().trim();
-                if (nhap.isEmpty()) {
-                    editTextnhap.setError("Vui lòng nhập dữ liệu....");
-                    return;
-                } else {
-                    List<Word> wordList = dataDictionary.searchVA(nhap);
-                    this.wordLists.addAll(wordList);
-                    avAdapter.notifyDataSetChanged();
-
-                }
-
-                Toast.makeText(getActivity(), "bat su kien", Toast.LENGTH_SHORT).show();
-            }
-        });
 
 
     }
 
-//    private void readFromAset(Context context, String name) {
-//        try {
-//            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(context.getAssets().open(name)));
-//            String mline;
-//            int i = 0;
-//            while ((mline = bufferedReader.readLine()) != null) {
-//                String[] lineData = mline.split("_");
-//                wordList.add(new Word("" + i, lineData[0], lineData[1]));
-//                i++;
-//            }
-//            bufferedReader.close();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//    }
+    @Override
+    public void TimWord() {
 
+    }
 
+    @Override
+    public void Laydulieu() {
+
+    }
 }
