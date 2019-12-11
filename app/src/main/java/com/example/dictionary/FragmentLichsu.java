@@ -11,7 +11,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.dictionary.interfaceMVP.ManlichsuView;
 
-public class Fragment_Lichsu extends Fragment implements ManlichsuView {
+public class FragmentLichsu extends Fragment implements ManlichsuView {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

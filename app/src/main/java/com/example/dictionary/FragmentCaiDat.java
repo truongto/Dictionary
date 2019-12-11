@@ -16,7 +16,7 @@ import androidx.fragment.app.FragmentManager;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class Fragment_CaiDat extends Fragment {
+public class FragmentCaiDat extends Fragment {
     private String mydata = "my_data";
     public String LangCode;
     private ImageView imageAnh, imageViet;
@@ -69,7 +69,7 @@ public class Fragment_CaiDat extends Fragment {
                 LangCode = "Viet";
                 saveLangCode();
                 textView.setText("Chọn Ngôn Ngữ");
-                Fragment_ManVietAnh fragment_manVietAnh = new Fragment_ManVietAnh();
+                FragmentManVietAnh fragment_manVietAnh = new FragmentManVietAnh();
                 FragmentManager fragmentManager = getFragmentManager();
                 fragmentManager.beginTransaction().replace(R.id.fragment, fragment_manVietAnh).commit();
 //                startActivity(new Intent(getActivity(), MainActivity.class));

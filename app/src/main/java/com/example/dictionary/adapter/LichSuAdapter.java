@@ -6,15 +6,15 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class LichSu_Adapter extends RecyclerView.Adapter<LichSu_Adapter.Holder> {
+public class LichSuAdapter extends RecyclerView.Adapter<LichSuAdapter.Holder> {
     @NonNull
     @Override
-    public LichSu_Adapter.Holder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public LichSuAdapter.Holder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         return null;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull LichSu_Adapter.Holder holder, int position) {
+    public void onBindViewHolder(@NonNull LichSuAdapter.Holder holder, int position) {
 
     }
 

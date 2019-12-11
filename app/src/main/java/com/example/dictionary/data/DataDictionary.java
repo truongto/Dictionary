@@ -16,26 +16,18 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Data_Dictionary extends SQLiteOpenHelper {
-    private static String TAG = "TuDienDatabase";
-    //tên cơ sở dữ liệu
-    public static String NAME = "dict_hh.db";
-    //dịa chỉ lưu trữ CSDL
-    public static String DB_PATH = null;
+public class DataDictionary extends SQLiteOpenHelper {
+    private static String TAG = "DataBaseHelper"; // Tag just for the LogCat window
+    //destination path (location) of our database on device
+    private static String DB_PATH = "";
+    private static String DB_NAME = "dict_hh.db";// Database name
     private SQLiteDatabase mDataBase;
-    Context mContext;
+    private final Context mContext;
 
-    private String AV_TABLE = "av";
-    private String VA_TABLE = "va";
 
-    public String ID = "id";
-    public String WORD = "word";
-    public String HTML = "html";
-    public String DES = "description";
-    public String PRO = "pronounce";
 
-    public Data_Dictionary(@Nullable Context context) {
-        super(context, NAME, null, 1);
+    public DataDictionary(@Nullable Context context) {
+        super(context, DB_NAME, null, 1);// 1? Its database Version
         if (android.os.Build.VERSION.SDK_INT >= 17) {
             DB_PATH = context.getApplicationInfo().dataDir + "/databases/";
         } else {
@@ -46,26 +38,28 @@ public class Data_Dictionary extends SQLiteOpenHelper {
 
 
     public boolean checkDataBase() {
-        File dbFile = new File(DB_PATH + NAME);
+        File dbFile = new File(DB_PATH + DB_NAME);
+        //Log.v("dbFile", dbFile + "   "+ dbFile.exists());
         return dbFile.exists();
     }
 
-    public void createDataBase() throws IOException {
-        boolean mDataBaseExits = checkDataBase();
-        if (!mDataBaseExits) {
+    public void createDataBase()  {
+        boolean mDataBaseExist = checkDataBase();
+        if (!mDataBaseExist) {
             this.getReadableDatabase();
             this.close();
-            try{
+            try {
+                //Copy the database from assests
                 copyDataBase();
                 Log.e(TAG, "createDatabase database created");
             } catch (IOException mIOException) {
-                throw new Error("Error Copying DataBase");
+                throw new Error("ErrorCopyingDataBase");
             }
         }
     }
     public void copyDataBase() throws IOException {
-        InputStream mInput = mContext.getAssets().open(NAME);
-        String outFileName = DB_PATH + NAME;
+        InputStream mInput = mContext.getAssets().open(DB_NAME);
+        String outFileName = DB_PATH + DB_NAME;
         OutputStream mOutput = new FileOutputStream(outFileName);
         byte[] mBuffer = new byte[1024];
         int mLength;
@@ -79,7 +73,7 @@ public class Data_Dictionary extends SQLiteOpenHelper {
 
 
     public boolean openDataBase() throws SQLException {
-        String mPath = DB_PATH + NAME;
+        String mPath = DB_PATH + DB_NAME;
         //Log.v("mPath", mPath);
         mDataBase = SQLiteDatabase.openDatabase(mPath, null, SQLiteDatabase.CREATE_IF_NECESSARY);
         //mDataBase = SQLiteDatabase.openDatabase(mPath, null, SQLiteDatabase.NO_LOCALIZED_COLLATORS);

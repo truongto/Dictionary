@@ -4,14 +4,14 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.example.dictionary.data.Data_Dictionary;
+import com.example.dictionary.data.DataDictionary;
 import com.example.dictionary.model.Word;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class AVdao {
-    private Data_Dictionary dataDictionary;
+    private DataDictionary dataDictionary;
     private SQLiteDatabase db;
     private String AV_TABLE = "av";
 
@@ -22,7 +22,7 @@ public class AVdao {
     public String PRO = "pronounce";
 
     public AVdao(Context context){
-       dataDictionary=new Data_Dictionary(context);
+       dataDictionary=new DataDictionary(context);
         db=dataDictionary.getWritableDatabase();
     }
 

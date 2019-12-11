@@ -2,10 +2,10 @@ package com.example.dictionary.presenter;
 
 import com.example.dictionary.interfaceMVP.ManlichsuView;
 
-public class Manlichsu_presenter  {
+public class ManlichsuPresenter {
     ManlichsuView manlichsuView;
 
-    public Manlichsu_presenter(ManlichsuView manlichsuView) {
+    public ManlichsuPresenter(ManlichsuView manlichsuView) {
         this.manlichsuView = manlichsuView;
     }
 }

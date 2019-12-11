@@ -6,15 +6,15 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class YeuThich_Adapter extends RecyclerView.Adapter<YeuThich_Adapter.Holder> {
+public class YeuThichAdapter extends RecyclerView.Adapter<YeuThichAdapter.Holder> {
     @NonNull
     @Override
-    public YeuThich_Adapter.Holder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public YeuThichAdapter.Holder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         return null;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull YeuThich_Adapter.Holder holder, int position) {
+    public void onBindViewHolder(@NonNull YeuThichAdapter.Holder holder, int position) {
 
     }
 

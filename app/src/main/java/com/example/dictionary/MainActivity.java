@@ -12,7 +12,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.example.dictionary.data.DataDictionary;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import java.io.IOException;
 
 public class MainActivity extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
@@ -25,6 +28,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        DataDictionary datadictionary =new DataDictionary(this);
+        datadictionary.createDataBase();
+
         bottomNavigationView = findViewById(R.id.bottom_navigation);
         toolbar = findViewById(R.id.toolbar_manchinh);
         imageViet = findViewById(R.id.icon_Viet);
@@ -50,15 +56,15 @@ public class MainActivity extends AppCompatActivity {
                                 .commit();
                         return true;
                     case R.id.YeuThich:
-                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new Fragment_YeuThich())
+                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new FragmentYeuThich())
                                 .commit();
                         return true;
                     case R.id.LichSu:
-                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new Fragment_Lichsu())
+                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new FragmentLichsu())
                                 .commit();
                         return true;
                     case R.id.CaiDat:
-                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new Fragment_CaiDat())
+                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new FragmentCaiDat())
                                 .commit();
                         return true;
                 }

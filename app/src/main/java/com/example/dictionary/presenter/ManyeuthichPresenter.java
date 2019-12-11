@@ -2,10 +2,10 @@ package com.example.dictionary.presenter;
 
 import com.example.dictionary.interfaceMVP.ManyeuthichView;
 
-public class Manyeuthich_Presenter {
+public class ManyeuthichPresenter {
     ManyeuthichView manyeuthichView;
 
-    public Manyeuthich_Presenter(ManyeuthichView manyeuthichView) {
+    public ManyeuthichPresenter(ManyeuthichView manyeuthichView) {
         this.manyeuthichView = manyeuthichView;
     }
 }

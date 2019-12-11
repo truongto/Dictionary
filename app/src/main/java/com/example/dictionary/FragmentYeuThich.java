@@ -11,7 +11,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.dictionary.interfaceMVP.ManyeuthichView;
 
-public class Fragment_YeuThich extends Fragment implements ManyeuthichView {
+public class FragmentYeuThich extends Fragment implements ManyeuthichView {
 
     @Nullable
     @Override

@@ -6,7 +6,7 @@
     <data>
         <variable
             name="fragmentAV"
-            type="com.example.dictionary.model.Word" />
+            type="com.example.dictionary.presenter.ManchinhPresenter" />
     </data>
 
 <LinearLayout
